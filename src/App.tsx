@@ -237,7 +237,16 @@ export default function App() {
 
   const logoUrl = "https://i.ibb.co/s9MrVrTf/PACOTE-COMPLETO-1.jpg";
 
-  if (isLoading) return null;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-brand-white">
+        <div className="flex flex-col items-center gap-4">
+          <img src={logoUrl} alt="Logo" className="w-16 h-16 rounded-2xl animate-pulse" referrerPolicy="no-referrer" />
+          <div className="w-8 h-8 border-4 border-brand-orange/20 border-t-brand-orange rounded-full animate-spin" />
+        </div>
+      </div>
+    );
+  }
 
   if (!userName) {
     return <LoginScreen onLogin={handleLogin} />;
