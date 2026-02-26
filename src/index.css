@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #A8D5BA;
+  --color-brand-green-strong: #16a34a;
+  --color-brand-orange: #FFB347;
+  --color-brand-white: #FDFDFD;
+  --color-brand-text: #4A4A4A;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes pulse-strong {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 20px 25px -5px rgba(22, 163, 74, 0.4); }
+}
+
+.animate-pulse-strong {
+  animation: pulse-strong 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-white text-brand-text font-sans;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm rounded-2xl;
+}
+
+.tab-active {
+  @apply text-brand-orange font-bold;
+}
+
+.tab-inactive {
+  @apply text-brand-text/60;
+}
