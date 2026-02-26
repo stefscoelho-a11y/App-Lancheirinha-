@@ -686,8 +686,18 @@ function HomeSection({
               </div>
             </div>
           ) : (
-            <div className="text-center py-6">
+            <div className="text-center py-6 space-y-4">
               <p className="text-sm text-brand-text/40">Não foi possível carregar a receita de hoje.</p>
+              <button 
+                onClick={() => {
+                  localStorage.removeItem('daily_recipe');
+                  localStorage.removeItem('daily_recipe_date');
+                  window.location.reload();
+                }}
+                className="text-brand-orange text-xs font-bold border border-brand-orange/20 px-4 py-2 rounded-full hover:bg-brand-orange/5 transition-colors"
+              >
+                Tentar carregar novamente
+              </button>
             </div>
           )}
         </div>

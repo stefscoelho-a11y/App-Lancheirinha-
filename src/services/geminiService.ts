@@ -55,7 +55,19 @@ export async function generateDailyRecipe(): Promise<DailyRecipe | null> {
     });
 
     if (response.text) {
-      return JSON.parse(response.text.trim());
+      let text = response.text.trim();
+      
+      // Remove markdown code blocks if the model included them
+      if (text.includes('```')) {
+        text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+      }
+      
+      try {
+        return JSON.parse(text);
+      } catch (parseError) {
+        console.error("Failed to parse Gemini response as JSON:", text);
+        return null;
+      }
     }
     return null;
   } catch (error) {
